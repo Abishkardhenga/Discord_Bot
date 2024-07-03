@@ -1,4 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
+
+
 
 module.exports = {
     cooldown: 5,
@@ -6,6 +9,11 @@ module.exports = {
         .setName('ping')
         .setDescription('Replies with Pong!'),
     async execute(interaction) {
-        await interaction.reply('Pong!');
+
+        await interaction.reply({ content: 'Secret Pong!', ephemeral: true });
+        await interaction.followUp({ content: "Pong Again", ephemeral: true });
+
+
+
     },
 };
